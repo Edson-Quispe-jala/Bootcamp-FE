@@ -1,0 +1,47 @@
+body {
+    background-color: rgb(0, 0, 125);
+}
+
+main {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: inherit;
+    position: relative;
+  }
+
+.content {
+    display: flex;
+    background-color: rgb(150, 150, 150);
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.sidebar {
+    min-width: 250px;
+    min-height: 100vh;
+    background-color: rgb(0, 224, 131);
+}
+
+.home {
+    width: 100%;
+}
+
+.navbar {
+    width: 100%;
+    min-height: 150px;
+    max-height: 150px;
+    background-color: rgb(88, 194, 255);
+}
+
+.cards {
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 20px;
+    height: calc(100vh - 25%);
+    background-color: rgb(90, 104, 111);
+}
