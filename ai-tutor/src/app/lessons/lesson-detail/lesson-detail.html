@@ -1,0 +1,33 @@
+<div class="lesson-detail-container">
+@if (lesson) {
+  <header>
+    <a routerLink="/lessons" class="back-link">← Back to Lessons</a>
+    <h1>{{ lesson.title }}</h1>
+  </header>
+
+  <main>
+    <section class="lesson-content">
+      <p>{{ lesson.content }}</p>
+      
+      <div class="actions">
+        <button (click)="toggleComplete()" [class.completed]="lesson.completed">
+          {{ lesson.completed ? 'Mark as Incomplete' : 'Mark as Completed' }}
+        </button>
+      </div>
+    </section>
+
+    <aside class="ai-tutor-container">
+      <div class="tutor-box">
+        <h3>AI Tutor</h3>
+        <p>Ask me anything about this lesson!</p>
+        <app-ai-chat />
+      </div>
+    </aside>
+  </main>
+} @else {
+  <div class="not-found">
+    <p>Lesson not found.</p>
+    <a routerLink="/lessons">Back to Lessons</a>
+  </div>
+}
+</div>

@@ -1,0 +1,23 @@
+<div class="chat-container">
+  <div class="message-list">
+    @for (msg of messages(); track msg.timestamp) {
+      <div class="message" [class.user]="msg.sender === 'user'" [class.ai]="msg.sender === 'ai'">
+        <div class="bubble">
+          {{ msg.text }}
+        </div>
+        <div class="time">{{ msg.timestamp | date:'shortTime' }}</div>
+      </div>
+    }
+  </div>
+
+  <form (submit)="sendMessage(); $event.preventDefault()" class="input-area">
+    <input 
+      type="text" 
+      [ngModel]="userInput()" 
+      (ngModelChange)="userInput.set($event)"
+      name="userInput"
+      placeholder="Ask a question..."
+    >
+    <button type="submit">Send</button>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+<div class="lesson-list-container">
+  <h2>Your Learning Path</h2>
+  <div class="lessons-grid">
+    @for (lesson of lessons(); track lesson.id) {
+      <div class="lesson-card" [routerLink]="['/lessons', lesson.id]">
+        <div class="status-indicator" [class.completed]="lesson.completed">
+          {{ lesson.completed ? '✓' : '○' }}
+        </div>
+        <div class="lesson-info">
+          <h3>{{ lesson.title }}</h3>
+          <p>{{ lesson.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
