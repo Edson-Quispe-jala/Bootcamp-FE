@@ -1,0 +1,57 @@
+.main {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1fr;
+  grid-template-rows: 10rem 5rem 5rem auto ;
+
+  grid-template-areas:
+    "header header header"
+    "sidebar navbar1 navbar1"
+    "sidebar navbar2 navbar2"
+    "sidebar box box";
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Areas */
+.header {
+  grid-area: header;
+  background: rgb(18, 196, 255);
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: rgb(67, 255, 86);
+  
+  .hidden {
+    display: none;
+}
+}
+
+.navbar1 {
+  grid-area: navbar1;
+  background: rgb(161, 121, 255);
+}
+
+.navbar2 {
+  grid-area: navbar2;
+  background: rgb(55, 0, 255);
+}
+
+.boxContainer {
+  grid-area: box;
+  background: rgb(133, 133, 133);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.box {
+  background: rgb(255, 67, 95);
+}
