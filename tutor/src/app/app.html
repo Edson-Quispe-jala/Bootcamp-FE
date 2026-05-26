@@ -11,5 +11,13 @@
     
     <div>{{ recipe().name }}</div>
     <div>{{ recipe().description }}</div>
+
+    <button on-click="addServings()">
+      +
+    </button>
+    <button on-click="substractServings()">
+      -
+    </button>
+    <div>{{ servings() }}</div>
   </section>
 </main>
