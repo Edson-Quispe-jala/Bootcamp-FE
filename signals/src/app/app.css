@@ -56,6 +56,7 @@
 .box {
   background: rgb(255, 67, 95);
 }
+
 @media (max-width: 768px) {
 
   .container {
@@ -69,7 +70,7 @@
   }
 
   .container.sidebar-hidden {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .menu-button {
@@ -81,12 +82,9 @@
   }
 
   .sidebar {
-    grid-column: 1 / -1;
-    grid-row: 2 / -1;
-
+    grid-column: 1;
+    grid-row: 2 / 5;
     z-index: 100;
-
-    width: 280px;
     transition: left 0.3s ease-in-out;
     background: rgb(67, 255, 86);
   }
