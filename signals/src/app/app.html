@@ -1,14 +1,13 @@
-<body class="main">
-  <div class="container">
+  <div class="container" [class.sidebar-hidden]="!showSideBar()">
      <div class="header">
         Header
       </div>
 
-      <div class="sidebar" [class.hidden]="!showSideBar()">
+      <div class="sidebar">
         Sidebar
         
-        <button on-click="openSideBar()">
-          button 2
+        <button (click)="openSideBar()">
+          button
         </button>
       </div>
 
@@ -38,4 +37,3 @@
         </div>
       </div>
   </div>
-</body>

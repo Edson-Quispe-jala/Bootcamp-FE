@@ -11,8 +11,8 @@ export class App {
   protected readonly title = signal('signals');
   protected readonly showSideBar = signal(true);
   
-  protected openSideBar() {
-    this.showSideBar.set(!this.showSideBar);
+  openSideBar() {
     console.log(this.showSideBar());
+    this.showSideBar.update(value => !value);
   }
 }

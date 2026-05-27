@@ -1,8 +1,3 @@
-.main {
-  margin: 0;
-  padding: 0;
-}
-
 .container {
   display: grid;
   grid-template-columns: 0.8fr 1fr 1fr;
@@ -15,6 +10,11 @@
     "sidebar box box";
   min-height: 100vh;
   box-sizing: border-box;
+  transition: grid-template-columns 0.3s ease-in-out;
+}
+.container.sidebar-hidden {
+  grid-template-columns: 0.1fr 1fr 1fr;
+  transition: grid-template-columns 0.3s ease-in-out;
 }
 
 /* Areas */
