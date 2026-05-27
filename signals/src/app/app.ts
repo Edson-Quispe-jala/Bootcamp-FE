@@ -9,10 +9,10 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('signals');
-  protected readonly showSideBar = signal(true);
+  protected readonly hideSideBar = signal(false);
   
   openSideBar() {
-    console.log(this.showSideBar());
-    this.showSideBar.update(value => !value);
+    console.log(this.hideSideBar());
+    this.hideSideBar.update(value => !value);
   }
 }
