@@ -8,7 +8,9 @@
       button 2
     </button>
 
-    
+    <div>
+      <img [src]="recipe().imgUrl" [alt]="recipe().name" width="300" />
+    </div>
     <div>{{ recipe().name }}</div>
     <div>{{ recipe().description }}</div>
 
