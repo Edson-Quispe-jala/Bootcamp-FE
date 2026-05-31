@@ -1,0 +1,25 @@
+<section>
+    <h1>{{ title() }}</h1>
+    <button on-click="button1Clicked()">
+        button 1
+    </button>
+    <button on-click="button2Clicked()">
+        button 2
+    </button>
+
+    <div>
+        <img [src]="recipe().imgUrl" [alt]="recipe().name" width="300" />
+    </div>
+    <div>{{ recipe().name }}</div>
+    <div>{{ recipe().description }}</div>
+
+    <button on-click="addServings()">
+        +
+    </button>
+    <button on-click="substractServings()">
+        -
+    </button>
+    <div>{{ servings() }}</div>
+
+    <pre>{{ adjustedIngredients() | json }}</pre>
+</section>
