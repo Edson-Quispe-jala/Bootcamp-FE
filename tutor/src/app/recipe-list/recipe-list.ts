@@ -1,9 +1,10 @@
 import { Component, computed, signal } from '@angular/core';
 import { MOCK_RECIPES } from '../mock-recipes';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-recipe-list',
-  imports: [],
+  imports: [JsonPipe],
   templateUrl: './recipe-list.html',
   styleUrl: './recipe-list.css',
 })
