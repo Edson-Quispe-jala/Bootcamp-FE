@@ -1,0 +1,208 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 5fr 1fr 1fr;
+    grid-template-rows: auto auto;
+
+    grid-template-areas:
+        "exileZone1 deckZone1 board deckZone2 exileZone2"
+        "exileZone1 deckZone1 board deckZone2 exileZone2";
+    gap: 0.5rem;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 1rem;
+}
+
+.exileZone1 {
+    grid-area: exileZone1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5rem;
+
+    grid-template-areas:
+        "exile1";
+}
+
+.exile1 {
+    grid-area: exile1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    grid-template-areas:
+        "."
+        "."
+        "exile";
+}
+
+
+.exileZone2 {
+    grid-area: exileZone2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5rem;
+    grid-template-areas:
+        "."
+        "exile2";
+}
+
+.exile2 {
+    grid-area: exile2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    grid-template-areas:
+        "exile";
+}
+
+.exile {
+    grid-area: exile;
+    background: rgb(27, 11, 197);
+    border: 4px solid black;
+}
+
+.deckZone1 {
+    grid-area: deckZone1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5rem;
+    grid-template-areas:
+        "deck1"
+        "deck2";
+}
+
+.deck1 {
+    grid-area: deck1;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    grid-template-areas:
+        "deck"
+        "pendulums"
+        "trash";
+}
+
+.deck2 {
+    grid-area: deck2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    grid-template-areas:
+        "stage"
+        "pendulums"
+        "fusions";
+}
+
+.deckZone2 {
+    grid-area: deckZone2;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.5rem;
+    grid-template-areas:
+        "deck3"
+        "deck4";
+}
+
+.deck3 {
+    grid-area: deck3;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    grid-template-areas:
+        "fusions"
+        "pendulums"
+        "stage";
+}
+
+.deck4 {
+    grid-area: deck4;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.5rem;
+
+    grid-template-areas:
+        "trash"
+        "pendulums"
+        "deck";
+}
+
+.deck{
+    grid-area: deck;
+    background: rgb(132, 126, 198);
+    border: 4px solid black;
+}
+
+.pendulums {
+    grid-area: pendulums;
+    background: rgb(138, 138, 138);
+    border: 4px solid black;
+}
+
+.trash {
+    grid-area: trash;
+    background: rgb(255, 0, 0);
+    border: 4px solid black;
+}
+
+.fusions {
+    grid-area: fusions;
+    background: rgb(202, 216, 88);
+    border: 4px solid black;
+}
+
+.stage {
+    grid-area: stage;
+    background: rgb(183, 182, 193);
+    border: 4px solid black;
+}
+
+.board {
+    grid-area: board;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 5fr 3fr 5fr 1fr;
+    grid-template-areas:
+        "."
+        "board1"
+        "."
+        "board2"
+        ".";
+}
+
+.board1 {
+    grid-area: board1;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    border: 4px solid black;
+    padding: 0.2rem;
+}
+
+.board2 {
+    grid-area: board2;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    border: 4px solid black;
+    padding: 0.2rem;
+}
+
+.card {
+    background: rgb(0, 0, 154);
+    border: 4px solid black;
+}
