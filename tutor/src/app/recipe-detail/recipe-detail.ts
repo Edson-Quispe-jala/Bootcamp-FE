@@ -13,7 +13,6 @@ export class RecipeDetail {
   protected readonly servings = signal(0);
   protected readonly adjustedIngredients = computed(() => this.recipe().ingredients.map(ingredient =>  ({ name: ingredient.name, quantity: ingredient.quantity * this.servings() })));
 
-
   protected addServings() {
     this.servings.update(val => val + 1);
   }

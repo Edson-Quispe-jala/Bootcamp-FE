@@ -15,5 +15,9 @@
     </div>
     <div class="servings">{{ servings() }}</div>
 
-    <pre class="ingredients">{{ adjustedIngredients() | json }}</pre>
+    <ul>
+        @for (ingredient of adjustedIngredients(); track ingredient) {
+            <li>{{ ingredient.name }}: {{ ingredient.quantity }}</li>
+        }
+    </ul>
 </section>
