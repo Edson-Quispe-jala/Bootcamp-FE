@@ -1,0 +1,17 @@
+.recipe-detail{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #ddd;
+}
+
+.name{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.butrons{
+    display: flex;
+    gap: 0.5rem;
+}

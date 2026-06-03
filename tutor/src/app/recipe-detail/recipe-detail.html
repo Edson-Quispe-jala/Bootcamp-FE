@@ -1,17 +1,19 @@
-<section>
-    <div>
+<section class="recipe-detail">
+    <div class="image">
         <img [src]="recipe().imgUrl" [alt]="recipe().name" width="300" />
     </div>
-    <div>{{ recipe().name }}</div>
-    <div>{{ recipe().description }}</div>
+    <div class="name">{{ recipe().name }}</div>
+    <div class="description">{{ recipe().description }}</div>
 
-    <button on-click="addServings()">
-        +
-    </button>
-    <button on-click="substractServings()">
-        -
-    </button>
-    <div>{{ servings() }}</div>
+    <div class="butrons">
+        <button class="plus" on-click="addServings()">
+            +
+        </button>
+        <button class="minus" on-click="substractServings()">
+            -
+        </button>
+    </div>
+    <div class="servings">{{ servings() }}</div>
 
-    <pre>{{ adjustedIngredients() | json }}</pre>
-</section>>
+    <pre class="ingredients">{{ adjustedIngredients() | json }}</pre>
+</section>
