@@ -1,18 +1,30 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { DatePipe, DATE_PIPE_DEFAULT_OPTIONS  } from "@angular/common";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [DatePipe],
+  providers: [
+    {
+      provide: DATE_PIPE_DEFAULT_OPTIONS,
+      useValue: { dateFormat: "longDate" }
+    }
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('signals');
   protected readonly hideSideBar = signal(false);
+  protected readonly data = signal([{name: 'test'}, {name: 'test2'}, {name: 'test3'}]);
+  currentDate = new Date();
   
   openSideBar() {
     console.log(this.hideSideBar());
     this.hideSideBar.update(value => !value);
+  }
+  getData(){
+    console.log("get data");
+    return this.data();
   }
 }
