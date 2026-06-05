@@ -19,6 +19,7 @@ export class App {
   protected readonly data = signal([{name: 'test'}, {name: 'test2'}, {name: 'test3'}]);
   // currentDate = new Date();
   protected readonly currentDate = signal(new Date());
+  protected readonly otherDate = signal(new Date(2026, 11, 25));
   
   updateDate() {
     this.currentDate.set(new Date());
