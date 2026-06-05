@@ -30,26 +30,26 @@
               {{item.name}}
           }
         </div>
+        <button (click)="updateDate()">
+          update date
+        </button>
       </div>
 
       <div class="box card">
-        Box 2
         <div>
-          {{ currentDate | date }}
+          {{ (currentDate()) | date }}
         </div>
       </div>
 
       <div class="box card">
-        Box 3
         <div>
-          {{ currentDate | date : "EEEE yyyy-MM-dd hh:mm:ss.SSS OOOO" }}
+          {{ (currentDate()) | date : "EEEE yyyy-MM-dd hh:mm:ss.SSS OOOO" }}
         </div>
       </div>
 
       <div class="box card">
-        Box 4
         <div>
-          {{ currentDate | date : "fullDate" }}
+          {{ (currentDate()) | date : "fullDate" }}
         </div>
       </div>
     </div>
