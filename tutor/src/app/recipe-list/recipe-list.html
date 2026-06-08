@@ -1,10 +1,12 @@
 <section class="recipe-list">
     <h1>{{ title() }}</h1>
-    <button on-click="button1Clicked()">
-        button 1
-    </button>
-    <button on-click="button2Clicked()">
-        button 2
-    </button>
+    <ul>
+        @for (filteredRecipe of filterRecipes(); track filteredRecipe) {
+        <button on-click="buttonClicked(filteredRecipe)">
+             {{ filteredRecipe.name }}
+        </button>
+        }
+    </ul>
+     <input [(ngModel)]="searchTerm" placeholder="Search a recipe" />
     <app-recipe-detail [recipe]="recipe()" />
 </section>
