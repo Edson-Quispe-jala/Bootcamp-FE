@@ -2,7 +2,12 @@
     <div class="image">
         <img [src]="recipe().imgUrl" [alt]="recipe().name" width="300" />
     </div>
-    <div class="name">{{ recipe().name }}</div>
+    <div class="name">
+        @if (recipe().isFavorite) {
+            <span class="favorite">★</span>
+        } 
+        {{ recipe().name }}
+    </div>
     <div class="description">{{ recipe().description }}</div>
 
     <div class="butrons">
