@@ -43,13 +43,34 @@
 
       <div class="box card">
         <div>
-          {{ (currentDate()) | date : "EEEE yyyy-MM-dd hh:mm:ss.SSS OOOO" }}
+          {{ (currentDate()) | date : "EEEE yyyy-dd-MM hh:mm:ss.SSS OOOO" }}
         </div>
       </div>
 
       <div class="box card">
         <div>
           {{ (otherDate()) | date : "fullDate" }}
+        </div>
+        <div>
+
+          <input
+            type="text"
+            (input)="updateEmail(($event.target).value)"
+            placeholder="Enter your email"
+          >
+        </div>
+        <div>
+          @if (email() | custom) {
+            <div>
+              Correo válido
+            </div>
+          }
+
+          @if (!(email() | custom)) {
+            <div>
+              Correo inválido
+            </div>
+          }
         </div>
       </div>
     </div>
