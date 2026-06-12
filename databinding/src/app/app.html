@@ -1,4 +1,4 @@
-<div class="{{ darkTheme() ? 'dark-theme' : '' }}">
+<div [class.dark-theme]="darkTheme()">
     <p>{{ count }}</p>
     <app-child (buttonClicked)="incrementCount()" />
     <div>
