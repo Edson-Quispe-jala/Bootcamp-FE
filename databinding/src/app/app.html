@@ -1,5 +1,10 @@
+<div class="{{ darkTheme() ? 'dark-theme' : '' }}">
+    <p>{{ count }}</p>
+    <app-child (buttonClicked)="incrementCount()" />
+    <div>
+        <app-child2 (theme)="toggleTheme()" />
+    </div>
 
-<p>{{ count }}</p>
-<app-child (buttonClicked)="incrementCount()" />
+    <router-outlet />
 
-<router-outlet />
+</div>
