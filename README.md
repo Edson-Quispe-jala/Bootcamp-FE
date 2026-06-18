@@ -1,6 +1,6 @@
 # HTML5
 
-HTML es la quinta y ultima version del lenguaje de Etiquetas HTML que supuso una revolución tecnológica.
+HTML es la quinta y ultima version del lenguaje de Etiquetas HTML.
 
 ## Obsolescencia de Flash
 Adobe Flash fue una plataforma de software multimedia utilizada para añadir animaciones, videos, aplicaciones interactivas y videojuegos a las páginas web. 
@@ -8,6 +8,20 @@ Adobe Flash fue una plataforma de software multimedia utilizada para añadir ani
 Durante mucho tiempo fue el estándar de la industria. Sin embargo, los navegadores web no podían usarlo de forma nativa y esto forzaba al usuario a instalar `Adobe Flash Player`.
 
 Por ello HTML5 introdujo etiquetas como `<video>`, `<audio>` y `<canvas>`, permitiendo hacer todo lo que hacía Flash directamente desde el navegador  sin instalar complementos, consumiendo menos recursos y de forma abierta.
+
+## Etiquetas Semánticas
+Antiguamente las paginas que usaban html estaban compuestas por etiquetas div genericas que no lograban representar de forma correcta el conetenido dentro de ellas.
+
+Las etiquetas semanticas logran darle mas significado a cada bloque.
+* Ayudan a mejorar el SEO de los motores de busqueda.
+* Hace que el código sea mucho más legible y limpio para otros desarrolladores.
+
+### Tipos:
+* `<header>`: Cabecera con títulos, logos y elementos de introducción.
+* `<nav>`: Bloque que contiene los enlaces principales de navegación.
+* `<section>`: Grupo de contenido relacionado con una temática específica.
+* `<article>`: Contenido independiente y reutilizable, como un artículo.
+* `<footer>`: Pie de página con créditos, enlaces y contacto
 
 ## Nuevos tipos de Input
 
