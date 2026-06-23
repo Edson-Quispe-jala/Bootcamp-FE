@@ -30,34 +30,70 @@ template.innerHTML = `
     .avatar {
         border-radius: 2rem;
     }
+    .colors{
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
     
 </style>
-<section class="credential">
-    <header>
-        <img src="jalaLogo.png" alt="Logo" class="logo">
-    </header>
-    <main>
-        <img alt="Avatar" class="avatar">
-        <h1><slot name="name"></slot></h1>
-    </main>
-    <footer>
-        <h2><slot name="role"></slot></h2>
-    </footer>
-</section>
+<body>
+    <section class="credential">
+        <header>
+            <img src="jalaLogo.png" alt="Logo" class="logo">
+        </header>
+        <main>
+            <img alt="Avatar" class="avatar">
+            <h1><slot name="name"></slot></h1>
+        </main>
+        <footer>
+            <h2><slot name="role"></slot></h2>
+        </footer>
+    </section>
+    <section class="colors">
+        <div class="colorsMain">
+            <span>main:</span>
+            <slot name="colorsMain"></slot>
+        </div>
+        <div class="colorsFooter">
+            <span>footer:</span>
+            <slot name="colorsFooter"></slot>
+        </div>
+        <button id="applyColors">Apply Colors</button>
+    </section>
+</body>
 `
 
 class Credential extends HTMLElement {
     static observedAttributes = ['avatar'];
     constructor() {
         super();
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
+        this._root = this.attachShadow({ mode: 'closed' });
+        this._root.appendChild(template.content.cloneNode(true));
     }
 
     connectedCallback() {
         const avatar = this.getAttribute('avatar');
-        const avatarElement = this.shadowRoot.querySelector('.avatar');
+        const avatarElement = this._root.querySelector('.avatar');
         avatarElement.src = avatar;
+        const button = this._root.querySelector('#applyColors');
+        button.addEventListener('click', () => {
+            this.applyColors();
+        });
+    }
+    
+    applyColors() {
+        const mainColorComponent = this.querySelector('color-component[slot="colorsMain"]');
+        const footerColorComponent = this.querySelector('color-component[slot="colorsFooter"]');
+
+        const mainColor = mainColorComponent.shadowRoot.querySelector('#colorPicker').value;
+        const footerColor = footerColorComponent.shadowRoot.querySelector('#colorPicker').value;
+
+        const main = this._root.querySelector('main');
+        const footer = this._root.querySelector('footer');
+
+        main.style.backgroundColor = mainColor;
+        footer.style.backgroundColor = footerColor;
     }
 }
 

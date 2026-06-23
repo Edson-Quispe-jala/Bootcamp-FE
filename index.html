@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Credential</title>
     <script src="credential.js"></script>
+    <script src="color.js"></script>
 </head>
 
 <body>
     <credential-component avatar="avatar.png">
         <span slot="name">Edson Quispe</span>
         <span slot="role">Developer</span>
+        <color-component slot="colorsMain" color="#000000">
+        </color-component>
+        <color-component slot="colorsFooter" color="#FF0000">
+        </color-component>
     </credential-component>
 </body>
 </html>
