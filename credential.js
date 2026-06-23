@@ -34,6 +34,7 @@ template.innerHTML = `
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+        width: fit-content;
     }
     
 </style>
