@@ -2,11 +2,10 @@
     <h1>{{ title() }}</h1>
     <ul>
         @for (filteredRecipe of filterRecipes(); track filteredRecipe) {
-        <button on-click="buttonClicked(filteredRecipe)">
+        <button [routerLink]="['/recipes', filteredRecipe.id]">
              {{ filteredRecipe.name }}
         </button>
         }
     </ul>
      <input [(ngModel)]="searchTerm" placeholder="Search a recipe" />
-    <app-recipe-detail [recipe]="recipe()" />
 </section>

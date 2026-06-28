@@ -3,10 +3,11 @@ import { RecipeDetail } from '../recipe-detail/recipe-detail';
 import { FormsModule } from '@angular/forms';
 import { RecipeModel } from '../models';
 import { Recipe } from '../services/recipe';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
-  imports: [RecipeDetail, FormsModule],
+  imports: [FormsModule, RouterLink],
   templateUrl: './recipe-list.html',
   styleUrl: './recipe-list.css',
 })
