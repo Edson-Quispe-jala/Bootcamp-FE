@@ -60,7 +60,6 @@ template.innerHTML = `
             <span>footer:</span>
             <slot name="colorsFooter"></slot>
         </div>
-        <button id="applyColors">Apply Colors</button>
     </section>
 </body>
 `
@@ -77,24 +76,17 @@ class Credential extends HTMLElement {
         const avatar = this.getAttribute('avatar');
         const avatarElement = this._root.querySelector('.avatar');
         avatarElement.src = avatar;
-        const button = this._root.querySelector('#applyColors');
-        button.addEventListener('click', () => {
-            this.applyColors();
-        });
     }
     
     applyColors() {
         const mainColorComponent = this.querySelector('color-component[slot="colorsMain"]');
         const footerColorComponent = this.querySelector('color-component[slot="colorsFooter"]');
 
-        const mainColor = mainColorComponent.shadowRoot.querySelector('#colorPicker').value;
-        const footerColor = footerColorComponent.shadowRoot.querySelector('#colorPicker').value;
-
         const main = this._root.querySelector('main');
         const footer = this._root.querySelector('footer');
 
-        main.style.backgroundColor = mainColor;
-        footer.style.backgroundColor = footerColor;
+        main.style.backgroundColor = mainColorComponent.getAttribute('color');
+        footer.style.backgroundColor = footerColorComponent.getAttribute('color');
     }
 }
 

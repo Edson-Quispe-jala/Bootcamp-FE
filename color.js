@@ -21,6 +21,25 @@ class Color extends HTMLElement {
         const color = this.getAttribute('color');
         const colorElement = this.shadowRoot.querySelector('#colorPicker');
         colorElement.value = color;
+        colorElement.addEventListener('input', () => {
+            this.setAttribute('color', colorElement.value);
+        });
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        if (name === 'color') {
+            const colorPicker = this.shadowRoot.querySelector('#colorPicker');
+
+            if (colorPicker) {
+                colorPicker.value = newValue;
+            }
+
+            const credential = this.parentElement;
+
+            if (credential && credential.tagName.toLowerCase() === 'credential-component') {
+                credential.applyColors();
+            }
+        }
     }
 }
 
