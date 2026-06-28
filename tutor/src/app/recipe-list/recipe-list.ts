@@ -1,8 +1,8 @@
-import { Component, signal, computed } from '@angular/core';
-import { MOCK_RECIPES } from '../mock-recipes';
+import { Component, signal, computed, inject } from '@angular/core';
 import { RecipeDetail } from '../recipe-detail/recipe-detail';
 import { FormsModule } from '@angular/forms';
 import { RecipeModel } from '../models';
+import { Recipe } from '../services/recipe';
 
 @Component({
   selector: 'app-recipe-list',
@@ -12,10 +12,11 @@ import { RecipeModel } from '../models';
 })
 export class RecipeList {
   protected readonly title = signal('My Recipe Box.');
-  protected readonly recipe = signal(MOCK_RECIPES[0]);
+  protected readonly recipeService = inject(Recipe);
+  protected readonly recipe = signal(this.recipeService.recipes[0]);
   
   protected readonly searchTerm = signal('');
-  protected readonly filterRecipes = computed(() => MOCK_RECIPES.filter(recipe => recipe.name.toLowerCase().includes(this.searchTerm().toLowerCase())));
+  protected readonly filterRecipes = computed(() => this.recipeService.recipes.filter(recipe => recipe.name.toLowerCase().includes(this.searchTerm().toLowerCase())));
 
   protected buttonClicked(selectedRecipe: RecipeModel) {
     console.log(selectedRecipe);
