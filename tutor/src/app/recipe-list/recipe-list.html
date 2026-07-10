@@ -1,11 +1,15 @@
 <section class="recipe-list">
-    <h1>{{ title() }}</h1>
-    <ul>
-        @for (filteredRecipe of filterRecipes(); track filteredRecipe) {
-        <button [routerLink]="['/recipes', filteredRecipe.id]">
-             {{ filteredRecipe.name }}
-        </button>
-        }
-    </ul>
-     <input [(ngModel)]="searchTerm" placeholder="Search a recipe" />
+    @defer {
+        <h1>{{ title() }}</h1>
+        <ul>
+            @for (filteredRecipe of filterRecipes(); track filteredRecipe) {
+            <button [routerLink]="['/recipes', filteredRecipe.id]">
+                {{ filteredRecipe.name }}
+            </button>
+            }
+        </ul>
+        <input [(ngModel)]="searchTerm" placeholder="Search a recipe" />
+    } @placeholder (minimum 1000ms) {
+        <p>Placeholder content</p>
+    }
 </section>
