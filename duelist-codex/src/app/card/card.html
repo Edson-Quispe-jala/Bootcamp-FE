@@ -1,0 +1,34 @@
+<div class="container" [class.spell]="card()?.frameType === 'spell'" [class.trap]="card()?.frameType === 'trap'"
+    [class.monster]="card()?.frameType !== 'spell' && card()?.frameType !== 'trap'">
+    <div class="header">
+        <p>{{ card()?.name }}</p>
+    </div>
+
+    <div class="navbar">
+        @if (card()?.frameType === 'spell') {
+        <p>[{{ card()?.type }}]</p>
+        } @else if (card()?.frameType === 'trap') {
+        <p>[{{ card()?.type }}]</p>
+        } @else if (card()?.level) {
+        @for (l of getLevelArray(card()?.level); track $index) {
+        <img src="https://ygoprodeck.com/wp-content/uploads/2017/01/level.png" alt="*" />
+        }
+        }
+    </div>
+
+    <div class="body">
+        <img [src]="card()?.card_images?.[0]?.image_url_cropped || ''" alt="{{ card()?.name }}">
+    </div>
+
+    <div class="footer">
+        <div class="footer-top">
+            <p>{{ card()?.desc }}</p>
+        </div>
+        @if (card()?.atk !== undefined && card()?.def !== undefined) {
+        <div class="footer-bottom">
+            <p>ATK / {{ card()?.atk }}</p>
+            <p>DEF / {{ card()?.def }}</p>
+        </div>
+        }
+    </div>
+</div>

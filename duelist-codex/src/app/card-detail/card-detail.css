@@ -1,0 +1,86 @@
+.container {
+    margin: 0 auto;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
+.card-detail {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2rem;
+    align-items: start;
+    max-height: 100vh;
+    object-fit: contain;
+}
+
+.card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-image img {
+    width: 100%;
+    border-radius: 1rem;
+    object-fit: contain;
+    max-height: 80vh;
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.card-info header {
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 1rem;
+}
+
+.card-info h1 {
+    margin: 0;
+}
+
+.card-info h2 {
+    font-size: 1rem;
+    margin-bottom: .75rem;
+}
+
+.card-effect,
+.card-stats,
+.card-price {
+    padding: 1rem;
+    border-radius: .75rem;
+    background: rgb(10 30 48);
+}
+
+.card-effect p {
+    line-height: 1.6;
+}
+
+.card-stats dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: 1rem;
+    margin: 0;
+}
+
+.card-stats dl div {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-stats dt {
+    font-weight: bold;
+}
+
+.card-stats dd {
+    margin: 0;
+}
+
+.loading,
+.error {
+    text-align: center;
+}

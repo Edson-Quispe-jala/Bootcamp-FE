@@ -1,0 +1,63 @@
+<section class="container">
+    <app-page-header redirectRoute="/cards" title="Cartas de yu-gi-oh" />
+
+    <section class="card-detail">
+        @defer (when card()) {
+        <section class="card-image">
+            <img [src]="card()!.card_images[0].image_url" [alt]="card()!.name">
+        </section>
+
+        <section class="card-info">
+            <header>
+                <h1>{{ card()!.name }}</h1>
+                <p>{{ card()!.type }}</p>
+            </header>
+
+            <section class="card-effect">
+                <h2>Efecto:</h2>
+                <p>
+                    {{ card()!.desc }}
+                </p>
+            </section>
+
+            @if (card()!.atk !== undefined || card()!.def !== undefined) {
+            <section class="card-stats">
+                <h2>Estadísticas</h2>
+                <dl>
+                    @if (card()!.atk !== undefined) {
+                    <div>
+                        <dt>ATK: </dt>
+                        <dd>{{ card()!.atk }}</dd>
+                    </div>
+                    }
+
+                    @if (card()!.def !== undefined) {
+                    <div>
+                        <dt>DEF: </dt>
+                        <dd>{{ card()!.def }}</dd>
+                    </div>
+                    }
+
+                    @if (card()!.level !== undefined) {
+                    <div>
+                        <dt>Nivel: </dt>
+                        <dd>{{ card()!.level }}</dd>
+                    </div>
+                    }
+                </dl>
+            </section>
+            }
+            <section class="card-price">
+                <h2>Precio de TCG Player</h2>
+                <p>
+                    $ {{ card()!.card_prices[0].tcgplayer_price }}
+                </p>
+            </section>
+        </section>
+        } @placeholder {
+        <p>Cargando...</p>
+        } @error {
+        <p>Error al cargar la imagen</p>
+        }
+    </section>
+</section>
