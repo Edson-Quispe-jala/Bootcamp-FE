@@ -1,0 +1,138 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    inline-size: 16rem;
+    aspect-ratio: 59 / 86;
+    gap: 0.4rem;
+    padding: 0.6rem;
+    background: #d18e40;
+    box-sizing: border-box;
+    border: 0.2rem solid #7b4c1a;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.container.spell {
+    background: #1d8273;
+    border-color: #0d463e;
+}
+
+.container.trap {
+    background: #bc5a84;
+    border-color: #6d2d46;
+}
+
+.container.monster {
+    background: #d18e40;
+    border-color: #7b4c1a;
+}
+
+.header {
+    flex: 0.6;
+    border: 0.1rem solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    padding-inline: 0.4rem;
+    border-radius: 0.25rem;
+}
+
+.header p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.navbar {
+    flex: 0.4;
+    margin-inline: 0.5rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-inline: 0.4rem;
+    border-radius: 0.25rem;
+}
+
+.navbar p {
+    font-size: 0.7rem;
+    margin: 0;
+    color: #fff;
+    font-weight: bold;
+}
+
+.navbar img {
+    block-size: 0.8rem;
+    aspect-ratio: 1;
+    margin-inline-start: 0.1rem;
+}
+
+.body {
+    flex: 4;
+    margin-inline: 0.5rem;
+    border: 0.15rem solid #a87034;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.container.spell .body {
+    border-color: #12534a;
+}
+
+.container.trap .body {
+    border-color: #823a57;
+}
+
+.body img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+}
+
+.footer {
+    flex: 1.8;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.4rem;
+    border: 0.1rem solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+    color: #111;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.footer-top {
+    flex: 3;
+    overflow-y: auto;
+    padding-inline-end: 0.2rem;
+}
+
+.footer-top p {
+    font-size: 0.6rem;
+    margin: 0;
+    line-height: 1.2;
+    text-align: justify;
+}
+
+.footer-bottom {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    border-block-start: 0.0625rem solid #ccc;
+    padding-block-start: 0.15rem;
+}
+
+.footer-bottom p {
+    font-size: 0.65rem;
+    margin: 0;
+    font-weight: bold;
+}

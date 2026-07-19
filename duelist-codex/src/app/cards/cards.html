@@ -1,0 +1,35 @@
+<section class="cards-container">
+  <app-page-header redirectRoute="/" title="Cartas de yu-gi-oh" />
+
+  <main class="content">
+    <section class="search">
+      <input type="text" placeholder="Buscar" [value]="searchTerm()" (input)="setSearch($event.target.value)">
+      <button (click)="searchCard()">Buscar</button>
+    </section>
+    <section class="cards-grid">
+      @if (isLoading()) {
+      <div class="loading-state">
+        @for (i of [1,2,3,4]; track i) {
+        <div class="card-skeleton"></div>
+        }
+      </div>
+      } @else {
+      @for (card of cardList(); track card.id) {
+      <div class="card-item" routerLink="/card/{{ card.id }}">
+        <app-card [card]="card"></app-card>
+      </div>
+      } @empty {
+      <div class="empty-state">
+        <h2>No hay cartas de yu-gi-oh para mostrar</h2>
+      </div>
+      }
+      }
+    </section>
+    @if (cardList().length > 0) {
+    <section class="pagination">
+      <button [disabled]="!cardService.allowPrevious()" (click)="previousPage()">Anterior</button>
+      <button [disabled]="!cardService.allowNext()" (click)="nextPage()">Siguiente</button>
+    </section>
+    }
+  </main>
+</section>
