@@ -1,4 +1,4 @@
-﻿# Bootcamp-FE — Duelist Codex
+# Bootcamp-FE — Duelist Codex
 
 ## Cómo ejecutar el proyecto
 
@@ -152,3 +152,42 @@ getLevelArray(level: number | undefined): number[] {
 
 ### Separación de responsabilidades: `api/`
 Los tipos TypeScript (`contract.ts`) y la URL base (`endpoints.ts`) están separados en la carpeta `src/app/api/`, dejando el servicio limpio y facilitando futuros cambios de API o versión.
+
+# Duelist Codex 
+
+## Parte 2
+
+
+### 1. Angular Router con `RouterOutlet` y `routerLink`
+Se implementó el sistema de enrutamiento oficial de Angular. Ahora se emplea `<router-outlet>` en el componente raíz para renderizar las vistas dinámicamente según la URL, y se utiliza la directiva `routerLink` para la navegación entre páginas, reemplazando la navegación manual.
+
+Las rutas principales configuradas son:
+- `/` — Inicio (`Home`).
+- `/cards` — Listado de cartas (`Cards`).
+- `/card/:id` — Detalle de una carta específica (`CardDetail`).
+- `/cards/:name` — Búsqueda directa de una carta desde la URL.
+
+### 2. Relación de rutas Padre/Hija (Child Routing)
+Para la vista de detalle de la carta (`/card/:id`), se configuraron sub-vistas anidadas (_child routes_) para separar y organizar la información:
+- `/card/:id/effect` — Efecto y descripción de la carta.
+- `/card/:id/price` — Precios de mercado.
+- `/card/:id/stats` — Estadísticas (ATK/DEF).
+
+Estas rutas hijas se renderizan dentro de un segundo `<router-outlet>` interno en el componente `CardDetail`.
+
+### 3. Guards Funcionales
+Se implementó el guard funcional `canShowStatsFn` para condicionar el acceso a la ruta `/card/:id/stats`. Este guard verifica en la data de la ruta si la carta posee estadísticas (por ejemplo, bloqueando el acceso a cartas mágicas/trampa) y, en caso negativo, redirige automáticamente a la pestaña de efecto.
+
+### 4. Resolvers para preparar datos
+Se emplearon _resolvers_ para precargar o sincronizar datos antes de activar las rutas:
+- **`cardResolver`** (en `/card/:id`): Realiza la petición a la API para traer los detalles de la carta. Si falla o la carta no existe, cancela la navegación y redirige.
+- **`searchCard`** (en `/cards/:name`): Sincroniza directamente el término de búsqueda de la URL con el servicio (`CardService`), evitando el _debounce_ y permitiendo una carga de resultados directa y reactiva.
+
+### 5. Directiva de Atributo Personalizada
+Se incorporó la directiva `HighlightCard` para agregar comportamiento y estilos interactivos al listado de cartas, aislando la manipulación del DOM o clases CSS fuera de los componentes.
+
+### 6. Pipe Personalizado
+Se implementó el pipe `AddDollarSignPipe` para encargarse del formateo visual de los precios en las tarjetas, asegurando que todos los valores monetarios se muestren consistentemente (añadiendo el símbolo "$").
+
+### 7. Uso de `resource()` vs `rxResource`
+Para manejar el _fetching_ reactivo del listado de cartas en el `CardService`, se utilizó la nueva función `resource()`. Se optó por `resource()` en lugar de `rxResource` porque nuestros parámetros reactivos (búsqueda, offset, limit) tienen su origen en **Signals** y la llamada a la API está basada en promesas nativas (`fetch`). `rxResource` está diseñado para integrarse con flujos que provienen o terminan en **Observables** (por ejemplo, si se utilizara `HttpClient` o flujos complejos de RxJS).

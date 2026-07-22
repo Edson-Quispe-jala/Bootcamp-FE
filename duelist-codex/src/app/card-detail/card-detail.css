@@ -48,36 +48,28 @@
     margin-bottom: .75rem;
 }
 
-.card-effect,
-.card-stats,
-.card-price {
-    padding: 1rem;
-    border-radius: .75rem;
-    background: rgb(10 30 48);
-}
-
-.card-effect p {
-    line-height: 1.6;
-}
-
-.card-stats dl {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-    gap: 1rem;
-    margin: 0;
-}
-
-.card-stats dl div {
+.card-tabs {
     display: flex;
-    flex-direction: column;
+    gap: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 1rem;
 }
 
-.card-stats dt {
-    font-weight: bold;
+.card-tabs a {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #ccc;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-bottom-color 0.2s;
 }
 
-.card-stats dd {
-    margin: 0;
+.card-tabs a:hover {
+    color: white;
+}
+
+.card-tabs a.active {
+    color: white;
+    border-bottom-color: white;
 }
 
 .loading,

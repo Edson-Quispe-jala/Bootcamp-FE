@@ -9,12 +9,7 @@
   box-sizing: border-box;
   text-align: center;
   z-index: 1;
-}
-
-.hero-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 1rem;
 }
 
 .title {
@@ -36,4 +31,33 @@
   border-radius: 12px;
   text-decoration: none;
   cursor: pointer;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #f8fafc;
+  background: #0f172a;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.input-search {
+  padding: 1rem 2.25rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #000000;
+  border-radius: 12px;
+}
+
+.input-label {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #f8fafc;
+  border-radius: 12px;
 }

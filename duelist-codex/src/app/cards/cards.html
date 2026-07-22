@@ -3,8 +3,7 @@
 
   <main class="content">
     <section class="search">
-      <input type="text" placeholder="Buscar" [value]="searchTerm()" (input)="setSearch($event.target.value)">
-      <button (click)="searchCard()">Buscar</button>
+      <input type="text" placeholder="Buscar" [value]="searchTerm()" (input)="setSearch($any($event.target).value)">
     </section>
     <section class="cards-grid">
       @if (isLoading()) {
@@ -15,7 +14,7 @@
       </div>
       } @else {
       @for (card of cardList(); track card.id) {
-      <div class="card-item" routerLink="/card/{{ card.id }}">
+      <div class="card-item" routerLink="/card/{{ card.id }}" [appHighlightCard]="card.atk">
         <app-card [card]="card"></app-card>
       </div>
       } @empty {

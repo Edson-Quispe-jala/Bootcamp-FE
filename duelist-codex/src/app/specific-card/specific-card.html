@@ -1,0 +1,9 @@
+<section class="container">
+    <app-page-header redirectRoute="/" title="Cartas de yu-gi-oh" />
+
+    @defer (when card()!.card_images[0].image_url) {
+    <section class="card-image">
+        <img [src]="card()!.card_images[0].image_url" [alt]="card()!.name">
+    </section>
+    }
+</section>

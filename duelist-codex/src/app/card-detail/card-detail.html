@@ -13,46 +13,15 @@
                 <p>{{ card()!.type }}</p>
             </header>
 
-            <section class="card-effect">
-                <h2>Efecto:</h2>
-                <p>
-                    {{ card()!.desc }}
-                </p>
-            </section>
+            <nav class="card-tabs">
+                <a routerLink="effect" routerLinkActive="active">Efecto</a>
+                @if (card()!.atk !== undefined || card()!.def !== undefined) {
+                <a routerLink="stats" routerLinkActive="active">Estadísticas</a>
+                }
+                <a routerLink="price" routerLinkActive="active">Precio</a>
+            </nav>
 
-            @if (card()!.atk !== undefined || card()!.def !== undefined) {
-            <section class="card-stats">
-                <h2>Estadísticas</h2>
-                <dl>
-                    @if (card()!.atk !== undefined) {
-                    <div>
-                        <dt>ATK: </dt>
-                        <dd>{{ card()!.atk }}</dd>
-                    </div>
-                    }
-
-                    @if (card()!.def !== undefined) {
-                    <div>
-                        <dt>DEF: </dt>
-                        <dd>{{ card()!.def }}</dd>
-                    </div>
-                    }
-
-                    @if (card()!.level !== undefined) {
-                    <div>
-                        <dt>Nivel: </dt>
-                        <dd>{{ card()!.level }}</dd>
-                    </div>
-                    }
-                </dl>
-            </section>
-            }
-            <section class="card-price">
-                <h2>Precio de TCG Player</h2>
-                <p>
-                    $ {{ card()!.card_prices[0].tcgplayer_price }}
-                </p>
-            </section>
+            <router-outlet></router-outlet>
         </section>
         } @placeholder {
         <p>Cargando...</p>
