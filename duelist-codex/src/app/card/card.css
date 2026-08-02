@@ -1,7 +1,6 @@
 .container {
     display: flex;
     flex-direction: column;
-    inline-size: 16rem;
     aspect-ratio: 59 / 86;
     gap: 0.4rem;
     padding: 0.6rem;

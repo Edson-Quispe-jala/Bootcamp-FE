@@ -4,4 +4,14 @@
   <a routerLink="/cards" class="btn-primary">
     <span>Ver cartas</span>
   </a>
+
+  <label class="input-label">
+    <span>Carta especifica:</span>
+  </label>
+
+  <input class="input-search" type="text" [value]="cardName()" (input)="setCardName($event.target.value)" />
+
+  <button class="btn-secondary" [disabled]="!cardName()" (click)="searchCard()">
+    <span>Buscar carta</span>
+  </button>
 </section>

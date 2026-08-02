@@ -1,0 +1,25 @@
+.card-stats {
+    padding: 1rem;
+    border-radius: .75rem;
+    background: rgb(10 30 48);
+}
+
+.card-stats dl {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    gap: 1rem;
+    margin: 0;
+}
+
+.card-stats dl div {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-stats dt {
+    font-weight: bold;
+}
+
+.card-stats dd {
+    margin: 0;
+}

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject, signal } from '@angular/core';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,4 +7,15 @@ import { RouterLink } from '@angular/router';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
-export class Home {}
+export class Home {
+  cardName = signal<string>('');
+  router = inject(Router);
+
+  setCardName(name: string) {
+    this.cardName.set(name);
+  }
+
+  searchCard() {
+    this.router.navigate(['/cards', this.cardName()]);
+  }
+}

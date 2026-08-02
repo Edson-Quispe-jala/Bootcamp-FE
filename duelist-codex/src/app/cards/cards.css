@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .search input {
@@ -43,7 +43,7 @@
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
+  gap: 4rem;
   width: 100%;
 }
 
@@ -122,4 +122,18 @@
 .pagination button:disabled {
   cursor: not-allowed;
   opacity: 0.5;
+}
+
+.high-attack {
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 15px 10px gold;
+  }
+
+  to {
+    box-shadow: 0 0 30px 10px gold;
+  }
 }

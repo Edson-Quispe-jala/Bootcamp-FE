@@ -1,0 +1,9 @@
+.card-effect {
+    padding: 1rem;
+    border-radius: .75rem;
+    background: rgb(10 30 48);
+}
+
+.card-effect p {
+    line-height: 1.6;
+}

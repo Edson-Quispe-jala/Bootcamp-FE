@@ -1,26 +1,18 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { CardData } from '../api/contract';
-import { OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { CardService } from '../services/card';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { PageHeader } from '../page-header/page-header';
 
 @Component({
   selector: 'app-card-detail',
-  imports: [PageHeader],
+  imports: [PageHeader, RouterOutlet, RouterLink, RouterLinkActive],
   templateUrl: './card-detail.html',
   styleUrl: './card-detail.css',
 })
-export class CardDetail implements OnInit {
+export class CardDetail {
   private readonly route = inject(ActivatedRoute);
-  private readonly cardService = inject(CardService);
 
-  readonly card = signal<CardData | null>(null);
-  readonly id = this.route.snapshot.paramMap.get('id') || '';
-
-  ngOnInit() {
-    this.cardService.getCardsById({ id: this.id }).then((data) => {
-      this.card.set(data[0]);
-    });
-  }
+  readonly card = signal(
+    this.route.snapshot.data['card'] as CardData | null
+  );
 }

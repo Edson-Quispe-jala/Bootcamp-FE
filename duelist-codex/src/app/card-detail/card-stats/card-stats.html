@@ -1,0 +1,25 @@
+<section class="card-stats">
+    <h2>Estadísticas</h2>
+    <dl>
+        @if (parent.card()!.atk !== undefined) {
+        <div>
+            <dt>ATK: </dt>
+            <dd>{{ parent.card()!.atk }}</dd>
+        </div>
+        }
+
+        @if (parent.card()!.def !== undefined) {
+        <div>
+            <dt>DEF: </dt>
+            <dd>{{ parent.card()!.def }}</dd>
+        </div>
+        }
+
+        @if (parent.card()!.level !== undefined) {
+        <div>
+            <dt>Nivel: </dt>
+            <dd>{{ parent.card()!.level }}</dd>
+        </div>
+        }
+    </dl>
+</section>
