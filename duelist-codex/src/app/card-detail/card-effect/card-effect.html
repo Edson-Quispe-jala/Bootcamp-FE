@@ -1,5 +1,5 @@
 <section class="card-effect">
-    <h2>Efecto:</h2>
+    <h2>{{ parent.card()!.typeline | cardEffect }}</h2>
     <p>
         {{ parent.card()!.desc }}
     </p>

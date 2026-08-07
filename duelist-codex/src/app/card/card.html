@@ -1,5 +1,14 @@
 <div class="container" [class.spell]="card()?.frameType === 'spell'" [class.trap]="card()?.frameType === 'trap'"
     [class.monster]="card()?.frameType !== 'spell' && card()?.frameType !== 'trap'">
+    
+    <button class="favorite-btn" [class.active]="isFavorite" (click)="toggleFavorite($event)">
+        ★
+    </button>
+
+    <button class="focus-btn" [class.active]="isFocused" (click)="toggleFocus($event)" title="Enfocar carta">
+        💡
+    </button>
+
     <div class="header">
         <p>{{ card()?.name }}</p>
     </div>

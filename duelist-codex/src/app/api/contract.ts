@@ -11,6 +11,7 @@ export interface CardData {
     level?: number;
     race?: string;
     attribute?: string;
+    typeline?: string[];
 }
 
 export interface CardImage {
@@ -28,3 +29,25 @@ export interface CardPrice {
     coolstuffinc_price: string;
     goat_price: string;
 }
+
+
+export const cardTypes = [
+    'Spell Card',
+    'Trap Card',
+    'Normal Monster',
+    'Effect Monster',
+    'Ritual Monster',
+    'Fusion Monster',
+    'Synchro Monster',
+    'Xyz Monster',
+    'Pendulum Effect Monster',
+    'Pendulum Effect Ritual Monster',
+    'Pendulum Flip Effect Monster',
+    'Pendulum Fusion Monster',
+    'Pendulum Synchro Monster',
+    'Pendulum Xyz Monster',
+    'Link Monster',
+    'Token'
+];
+
+export const cardAttributes = ['DARK', 'LIGHT', 'WIND', 'WATER', 'FIRE', 'EARTH', 'DIVINE'];

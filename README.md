@@ -191,3 +191,44 @@ Se implementó el pipe `AddDollarSignPipe` para encargarse del formateo visual d
 
 ### 7. Uso de `resource()` vs `rxResource`
 Para manejar el _fetching_ reactivo del listado de cartas en el `CardService`, se utilizó la nueva función `resource()`. Se optó por `resource()` en lugar de `rxResource` porque nuestros parámetros reactivos (búsqueda, offset, limit) tienen su origen en **Signals** y la llamada a la API está basada en promesas nativas (`fetch`). `rxResource` está diseñado para integrarse con flujos que provienen o terminan en **Observables** (por ejemplo, si se utilizara `HttpClient` o flujos complejos de RxJS).
+
+# Duelist Codex 
+
+## Parte 3
+
+### 1. Uso de dos pipes personalizados
+Se incorporaron dos pipes para transformar y formatear información visualmente en la interfaz:
+- **`AddDollarSignPipe`**: agrega el símbolo `$` a los precios mostrados en la vista de detalle.
+- **`CardEffectPipe`**: formatea el texto del efecto y los tipos asociados de las cartas.
+
+### 2. Peticiones reactivas con `resource()`
+El servicio de cartas usa la API de `resource()` de Angular para manejar la carga de datos de forma reactiva y basada en signals:
+- La petición se dispara automáticamente cuando cambian los parámetros de búsqueda, paginación o filtros.
+- Se aprovecha el estado de `loading` de `resource()` para mostrar loaders mientras se obtienen los datos.
+- También se utiliza el estado de `error` de `resource()` para manejar fallos de la consulta de manera visual.
+
+### 3. Búsqueda con debounce y sin botón
+La búsqueda por nombre ahora funciona en tiempo real mientras el usuario escribe, sin depender de un botón de acción:
+- Se implementó un flujo con `debounceTime` para evitar peticiones frecuentes.
+- La actualización se sincroniza con un signal intermedio y se aplica automáticamente al cargar resultados.
+
+### 4. Filtros combinados
+Se agregaron nuevos filtros que funcionan de manera conjunta para refinar los resultados:
+- **Tipo** de carta.
+- **Atributo** de carta.
+- **ATK**.
+- **DEF**.
+
+Cada cambio en estos filtros actualiza la consulta y reinicia la paginación para mostrar resultados coherentes desde la primera página.
+
+### 5. Carta en foco
+Se incorporó un panel lateral de **carta en foco** en la vista de listado:
+- El usuario puede destacar una carta específica desde la grilla.
+- La carta seleccionada se muestra en un bloque visual con acceso rápido a su detalle.
+
+### 6. `@defer` en el detalle de carta
+La vista de detalle de una carta utiliza el bloque **`@defer`** de Angular para diferir la renderización del contenido hasta que la carta ya esté disponible:
+- Mientras carga, se muestra un placeholder.
+- Esto mejora la experiencia de carga y evita renderizar contenido incompleto antes de tener los datos.
+- Aunque de momento no se usa por que la ruta usa un resolve que no se accede hasta que la carta este lista para mostrar
+

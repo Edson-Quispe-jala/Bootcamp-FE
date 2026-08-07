@@ -8,14 +8,9 @@ import { RouterLink, Router } from '@angular/router';
   styleUrl: './home.css',
 })
 export class Home {
-  cardName = signal<string>('');
   router = inject(Router);
 
-  setCardName(name: string) {
-    this.cardName.set(name);
-  }
-
-  searchCard() {
-    this.router.navigate(['/cards', this.cardName()]);
+  goToFavoriteCards() {
+    this.router.navigate(['/favorites']);
   }
 }
