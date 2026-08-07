@@ -9,6 +9,7 @@
     border: 0.2rem solid #7b4c1a;
     overflow: hidden;
     border-radius: 0.5rem;
+    position: relative;
 }
 
 .container.spell {
@@ -43,6 +44,64 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.favorite-btn {
+    position: absolute;
+    top: 0.3rem;
+    right: 0.3rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.favorite-btn.active {
+    color: #ffd700;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+}
+
+.focus-btn {
+    position: absolute;
+    top: 2.8rem;
+    right: 0.3rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.4);
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.focus-btn.active {
+    background: rgba(255, 235, 59, 0.3);
+    color: #ffeb3b;
+    box-shadow: 0 0 10px #ffeb3b;
+}
+
+.focus-btn:hover {
+    transform: scale(1.2);
 }
 
 .navbar {

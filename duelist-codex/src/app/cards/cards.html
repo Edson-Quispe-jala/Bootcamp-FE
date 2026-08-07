@@ -4,31 +4,98 @@
   <main class="content">
     <section class="search">
       <input type="text" placeholder="Buscar" [value]="searchTerm()" (input)="setSearch($any($event.target).value)">
+      <button class="btn-filter" [class.active]="showFilters()" (click)="toggleFilters()" title="Filtros">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M10 18h4v-2h-4v2zM3 6v2h18V6H3zm3 7h12v-2H6v2z" />
+        </svg>
+      </button>
     </section>
-    <section class="cards-grid">
-      @if (isLoading()) {
-      <div class="loading-state">
-        @for (i of [1,2,3,4]; track i) {
-        <div class="card-skeleton"></div>
-        }
+
+    @if (showFilters()) {
+    <section class="filters-panel">
+      <div class="filter-item">
+        <label>Type</label>
+        <select [value]="typeFilter()" (change)="setTypeFilter($any($event.target).value)">
+          <option value="" [selected]="typeFilter() === ''">Select Type</option>
+          @for (type of cardTypes; track type) {
+          <option [value]="type" [selected]="typeFilter() === type">{{ type }}</option>
+          }
+        </select>
       </div>
-      } @else {
-      @for (card of cardList(); track card.id) {
-      <div class="card-item" routerLink="/card/{{ card.id }}" [appHighlightCard]="card.atk">
-        <app-card [card]="card"></app-card>
+
+      <div class="filter-item">
+        <label>Attribute</label>
+        <select [value]="attributeFilter()" (change)="setAttributeFilter($any($event.target).value)">
+          <option value="" [selected]="attributeFilter() === ''">Select Attribute</option>
+          @for (attr of cardAttributes; track attr) {
+          <option [value]="attr" [selected]="attributeFilter() === attr">{{ attr }}</option>
+          }
+        </select>
       </div>
-      } @empty {
-      <div class="empty-state">
-        <h2>No hay cartas de yu-gi-oh para mostrar</h2>
+
+      <div class="filter-item">
+        <label>ATK</label>
+        <input type="number" placeholder="ATK" [value]="atkInput() ?? ''"
+          (input)="setAtkInput($any($event.target).value)" />
       </div>
-      }
-      }
-    </section>
-    @if (cardList().length > 0) {
-    <section class="pagination">
-      <button [disabled]="!cardService.allowPrevious()" (click)="previousPage()">Anterior</button>
-      <button [disabled]="!cardService.allowNext()" (click)="nextPage()">Siguiente</button>
+
+      <div class="filter-item">
+        <label>DEF</label>
+        <input type="number" placeholder="DEF" [value]="defInput() ?? ''"
+          (input)="setDefInput($any($event.target).value)" />
+      </div>
     </section>
     }
+    <div class="cards-layout">
+      <div class="main-cards-section">
+        <section class="cards-grid">
+          @if (isLoading()) {
+          <div class="loading-state">
+            @for (i of [1,2,3,4]; track i) {
+            <div class="card-skeleton"></div>
+            }
+          </div>
+          } @else if(failedRequest()) {
+          <div class="empty-state">
+            <h2>No se encontró ninguna tarjeta que coincidiera con su consulta en la base de datos.</h2>
+          </div>
+          } @else {
+          @for (card of cardList(); track card.id) {
+          <div class="card-item" routerLink="/card/{{ card.id }}" [appHighlightCard]="card.atk">
+            <app-card [card]="card"></app-card>
+          </div>
+          } @empty {
+          <div class="empty-state">
+            <h2>No hay cartas de yu-gi-oh para mostrar</h2>
+          </div>
+          }
+          }
+        </section>
+        @if (cardList().length > 0) {
+        <section class="pagination">
+          <button [disabled]="!cardService.allowPrevious()" (click)="previousPage()">Anterior</button>
+          <button [disabled]="!cardService.allowNext()" (click)="nextPage()">Siguiente</button>
+        </section>
+        }
+      </div>
+
+      @if (focusedCard(); as focused) {
+      <aside class="focused-section">
+        <div class="focused-header">
+          <h3>Carta en Foco</h3>
+          <button class="btn-close-focus" (click)="clearFocus()" title="Cerrar foco">✕</button>
+        </div>
+        <div class="focused-body">
+          <img [src]="focused.card_images[0].image_url" [alt]="focused.name" class="focused-img" />
+          <p class="focused-title">{{ focused.name }}</p>
+        </div>
+        <div class="focused-actions">
+          <button class="btn-view-detail" routerLink="/card/{{ focused.id }}">
+            Ver detalle
+          </button>
+        </div>
+      </aside>
+      }
+    </div>
   </main>
 </section>

@@ -1,5 +1,5 @@
 <header class="page-header">
-  <a [routerLink]="redirectRoute()" class="btn-back">
+  <a (click)="goBack()" class="btn-back">
     <span>Volver</span>
   </a>
   <h1 class="page-title">{{ title() }}</h1>

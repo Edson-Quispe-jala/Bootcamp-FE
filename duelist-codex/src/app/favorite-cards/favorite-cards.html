@@ -1,0 +1,17 @@
+<section class="cards-container">
+  <app-page-header redirectRoute="/" title="Cartas Favoritas" />
+
+  <main class="content">
+    <section class="cards-grid">
+      @for (card of favoriteCards(); track card.id) {
+      <div class="card-item" routerLink="/card/{{ card.id }}" [appHighlightCard]="card.atk">
+        <img [src]="card.card_images[0].image_url" [alt]="card.name" class="favorite-card-img" />
+      </div>
+      } @empty {
+      <div class="empty-state">
+        <h2>No tienes cartas favoritas aún</h2>
+      </div>
+      }
+    </section>
+  </main>
+</section>

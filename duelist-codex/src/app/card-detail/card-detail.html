@@ -1,5 +1,5 @@
 <section class="container">
-    <app-page-header redirectRoute="/cards" title="Cartas de yu-gi-oh" />
+    <app-page-header title="Cartas de yu-gi-oh" />
 
     <section class="card-detail">
         @defer (when card()) {
@@ -23,7 +23,7 @@
 
             <router-outlet></router-outlet>
         </section>
-        } @placeholder {
+        } @placeholder (minimum 3s) {
         <p>Cargando...</p>
         } @error {
         <p>Error al cargar la imagen</p>
